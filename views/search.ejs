@@ -1,0 +1,110 @@
+<%- include("header") -%>
+<h1 style="text-align:center">Search Trains</h1>
+
+<form  action="/search" method="post">
+
+
+<div class="contaier">
+  <div class="row">
+
+    <div class="col-3 inp">
+      <div class="input-group mb-4">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">From</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01" name="from">
+          <option >Islamabad</option>
+          <option >Karachi</option>
+          <option >Rawalpindi</option>
+          <option >Lahore</option>
+          <option >Multan</option>
+          <option >Peshawar</option>
+          <option >Havelian</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-3 inp">
+      <div class="input-group mb-4">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">To</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01" name="to">
+          <option >Islamabad</option>
+          <option >Karachi</option>
+          <option >Rawalpindi</option>
+          <option >Lahore</option>
+          <option >Multan</option>
+          <option >Peshawar</option>
+          <option >Havelian</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-3 inp">
+      <div class="input-group mb-4">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Date</label>
+        </div>
+        <input class="form-control" type="date" name="date">
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="row">
+    <div class="col-3 inp1">
+           <button type="submit" class="btn btn-success btn-lg btninp" name="button"> Search</button>
+    </div>
+  </div>
+
+</div>
+</form>
+
+<%  if (data.length == "0") { %>
+      <h3 style="text-align:center"> Result Not Found </h3>
+  <% }%>
+
+<% if(data != "get" && data.length != '0'){ %>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Train No</th>
+      <th scope="col">Train Type</th>
+      <th scope="col">From</th>
+      <th scope="col">To</th>
+      <th scope="col">Date</th>
+      <th scope="col">Arrival Time</th>
+      <th scope="col">Departure Time</th>
+        <th scope="col">Book</th>
+      </tr>
+    </thead>
+<tbody>
+
+<% data.forEach(function(result) { %>
+<tr>
+  <td> <%= result.trainno  %>  </td>
+  <td> <%= result.traintype %> </td>
+  <td> <%= result.trainfrom %> </td>
+  <td> <%= result.trainto %>   </td>
+  <td> <%= result.date %>      </td>
+  <td> <%= result.atime %>      </td>
+  <td> <%= result.dtime %>      </td>
+  <td> <a href="/booking/<%= result.trainno %>-<%= result.trainfrom %>-<%= result.trainto %>"><button type="button"  class="btn btn-outline-success bookbtn" name="button"><i class="far fa-address-card"></i></button></a>  </td>
+
+</tr>
+
+<%} )%>
+
+</tbody>
+
+</table>
+<% }%>
+
+<script>
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+body{
+background-color: #eeeeee;
+}
+
+.titleH{
+font-family: 'Merriweather Sans', sans-serif;
+  text-align: center;
+  position: absolute;
+  color: #eeeeee;
+  margin: 10rem 6rem;
+
+}
+
+.inp{
+  margin:5rem auto 2rem auto;
+}
+
+.inp1{
+  margin:1rem auto;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.btninp{
+   padding:0.5rem 5rem;
+}
+
+.bookbtn{
+  padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+}
+
+.con{
+  margin:4rem 0 0 18rem;
+  text-align: center;
+}
+.con label{
+  margin-top: 4%;
+}
+
+.btnbook{
+  margin:2rem 0 0 18rem;
+  padding:1rem 5rem;
+}

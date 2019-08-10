@@ -1,0 +1,58 @@
+body{
+  font-family: 'Noto Serif SC', serif;
+  background-image: url("/images/11.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+h1,h2{
+  font-family: 'Merriweather Sans', sans-serif;
+
+}
+
+.signup{
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.signupBody{
+  background-image: linear-gradient(#e3e3e3,#58b368);
+  font-family: 'Noto Serif SC', serif;
+}
+
+.title{
+
+  color: #141414;
+}
+
+.box a{
+  color: #dee1ec;
+}
+
+.container-fluid .navbar a{
+  color: #141414;
+  font-family: 'Noto Serif SC', serif;
+
+}
+
+
+
+.box{
+  text-align: center;
+  max-width: 330px;
+
+  padding: 15px;
+  margin: auto;
+}
+.box .form-control {
+  position: relative;
+  height: auto;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-control{
+  opacity: 0.8;
+}

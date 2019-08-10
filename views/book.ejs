@@ -1,0 +1,61 @@
+<%-  include("header.ejs") -%>
+<h1 style="text-align:center">Booking</h1>
+<hr>
+
+<form class="form-group" action="/booking" method="post">
+<div class="container con" >
+  <div class="row form-group" >
+    <div class="col-4" >
+      <input type="text" class="form-control" name="name" placeholder="Enter Name">
+    </div>
+    <div class="col-4 ">
+      <input type="text" class="form-control" name="mobileno" placeholder="Enter Mobie Number">
+    </div>
+
+  </div>
+
+  <div class="row form-group">
+    <div class="col-4">
+      <input type="text" class="form-control" name="seats" placeholder="Enter Number of Seats">
+    </div>
+    <div class="col-2">
+       <label>Train No:</label>
+    </div>
+    <div class="col-2">
+      <input type="text" class="form-control" name="tNo" value=<%=data %> readonly>
+    </div>
+
+  </div>
+
+
+  <div class="row form-group">
+
+    <div class="col-2">
+       <label>Train From:</label>
+    </div>
+    <div class="col-2">
+      <input type="text" class="form-control" name="tFrom" value=<%=tfrom %> readonly>
+    </div>
+    <div class="col-2">
+       <label>Train To:</label>
+    </div>
+    <div class="col-2">
+      <input type="text" class="form-control" name="tTo" value=<%=tto %> readonly>
+    </div>
+
+  </div>
+
+  <div class="row form-group" style="text-align:center">
+    <button type="submit" class="btn btn-success btnbook" name="button">BOOK</button>
+
+  </div>
+</form>
+</div>
+
+
+
+
+
+</body>
+
+</html>

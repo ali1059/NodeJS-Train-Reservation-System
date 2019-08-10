@@ -120,6 +120,11 @@ app.get("/login", function(req, res) {
   res.render("login.ejs");
 });
 
+app.get("/", function(req, res) {
+
+  res.render("login.ejs");
+});
+
 app.get("/home", authenticationMiddleware(), function(req, res) {
   res.render("home.ejs",{username:user});
 });

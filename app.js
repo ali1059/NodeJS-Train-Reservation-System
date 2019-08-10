@@ -14,10 +14,10 @@ var LocalStrategy = require("passport-local").Strategy;
 
 const saltRounds = 10;
 var options = {
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "mydb"
+  host: "us-cdbr-iron-east-02.cleardb.net",
+  user: "b5cc9a8011b24c",
+  password: "8213edc3",
+  database: "heroku_b43b181742c5259"
 };
 var con = mysql.createConnection(options);
 var sessionStore = new MySQLStore(options, con);
@@ -90,8 +90,8 @@ passport.use(new LocalStrategy(
   }
 ));
 
-app.listen(3000, function() {
-  console.log("Server started at port 3000");
+app.listen(process.env.PORT, function() {
+  console.log("Server Started");
 });
 
 app.get("/login", function(req, res) {

@@ -28,9 +28,30 @@ con.connect(function(err) {
   if (err) console.log("=>=>=>=>=>=>=>=>=>" + err);
   else {
     console.log("Connected");
+    createTables();
   }
 });
 
+function createTables(){
+
+  let sql1="CREATE TABLE IF NOT EXISTS `booking` (
+    `Bookingid` int(10) NOT NULL AUTO_INCREMENT,
+    `Name` text NOT NULL,
+    `Mobile` varchar(30) NOT NULL,
+    `Seats` int(5) NOT NULL,
+    `trainno` int(5) NOT NULL,
+    `id` int(5) NOT NULL,
+    PRIMARY KEY (`Bookingid`),
+    KEY `trainno` (`trainno`),
+    KEY `id` (`id`)
+  )";
+
+  con.query(sql1,function(err,res){
+    if(err) console.log(err);
+    console.log("Booking Created");
+  });
+
+}
 
 var user;
 const app = express();

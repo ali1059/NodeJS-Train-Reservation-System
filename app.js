@@ -19,7 +19,10 @@ var options = {
   password: "8213edc3",
   database: "heroku_b43b181742c5259"
 };
-var con = mysql.createConnection(options);
+var con = mysql.createConnection(options,function(err,res){
+  if(err) console.log(err);
+  console.log("NO error in Connection");
+});
 var sessionStore = new MySQLStore(options, con);
 
 
@@ -155,7 +158,6 @@ function test(words) {
 
 }
 
-var err  ;
 var errors = {};
 app.post("/signup",[
   check('username','Username cannot be Empty').not().isEmpty(),

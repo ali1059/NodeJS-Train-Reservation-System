@@ -26,9 +26,9 @@ con.on('error', function(err) {
 var sessionStore = new MySQLStore(options, con);
 
 
-con.connect(function(err) {
+con.connect(function(errc) {
 
-  if (err) console.log("=>=>=>=>=>=>=>=>=>" + err);
+  if (errc) console.log("=>=>=>=>=>=>=>=>=>" + errc);
   else {
     console.log("Connected to DB");
     // createTables();

@@ -13,15 +13,15 @@ var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 
 const saltRounds = 10;
-var options = {
+const options = {
   host: "us-cdbr-iron-east-02.cleardb.net",
   user: "b5cc9a8011b24c",
   password: "8213edc3",
   database: "heroku_b43b181742c5259"
 };
-var con = mysql.createConnection(options,function(err,res){
-  if(err) console.log("-___//////////----------------/-////////////////"+err);
-  console.log("NO error in Connection");
+const con = mysql.createConnection(options);
+con.on('error', function(err) {
+  console.log("I'm dead");
 });
 var sessionStore = new MySQLStore(options, con);
 

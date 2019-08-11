@@ -21,8 +21,16 @@ const options = {
 };
 const con = mysql.createConnection(options);
 con.on('error', function(err) {
-  console.log("I'm dead");
+  console.log("I'm dead =>"+ err.toString());
 });
+
+con.query(
+  'kill connection_id()',
+  function(err, results, fields) {
+    console.log('CALLBACK', err);
+  }
+);
+
 var sessionStore = new MySQLStore(options, con);
 
 
@@ -93,7 +101,7 @@ passport.use(new LocalStrategy(
         done("ERROR="+err);
       }
 
-      if (result.length == 0) {
+      else if (result.length == 0) {
         console.log("ERROR="+err);
         done(null, false);
       } else {

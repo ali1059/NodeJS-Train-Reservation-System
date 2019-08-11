@@ -20,7 +20,7 @@ var options = {
   database: "heroku_b43b181742c5259"
 };
 var con = mysql.createConnection(options,function(err,res){
-  if(err) console.log(err);
+  if(err) console.log("-___//////////----------------/-////////////////"+err);
   console.log("NO error in Connection");
 });
 var sessionStore = new MySQLStore(options, con);

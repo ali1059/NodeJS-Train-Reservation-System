@@ -27,7 +27,7 @@ con.connect(function(err) {
 
   if (err) console.log("=>=>=>=>=>=>=>=>=>" + err);
   else {
-    console.log("Connected");
+    console.log("Connected to DB");
     // createTables();
   }
 });
@@ -111,7 +111,12 @@ passport.use(new LocalStrategy(
   }
 ));
 
-app.listen(process.env.PORT, function() {
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3306;
+}
+
+app.listen(port, function() {
   console.log("Server Started");
 });
 

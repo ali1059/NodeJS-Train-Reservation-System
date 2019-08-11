@@ -19,7 +19,17 @@ const options = {
   password: "8213edc3",
   database: "heroku_b43b181742c5259"
 };
+
 const con = mysql.createConnection(options);
+
+var del = con._protocol._delegateError;
+con._protocol._delegateError = function(err, sequence){
+  if (err.fatal) {
+    console.trace('fatal error: ' + err.message);
+  }
+  return del.call(this, err, sequence);
+};
+
 con.on('error', function(err) {
   console.log("I'm dead =>"+ err.toString());
 });
@@ -91,7 +101,7 @@ passport.use(new LocalStrategy(
   function(username, password, done) {
 
     user = username;
-    console.log("HERE");
+    console.log("HERE I AM CHECK LOGS");
     console.log(username);
     console.log(password);
 

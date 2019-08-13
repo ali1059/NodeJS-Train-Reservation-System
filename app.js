@@ -107,12 +107,12 @@ passport.use(new LocalStrategy(
 
     con.query("SELECT id, password from user WHERE username= ? ", [username], function(err, result) {
       if (err) {
-        console.log("ERROR="+err);
+        console.log("ERRORif="+err);
         done("ERROR="+err);
       }
 
       else if (result.length == 0) {
-        console.log("ERROR="+err);
+        console.log("ERRORelseif="+err);
         done(null, false);
       } else {
         const hash = result[0].password.toString();

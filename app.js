@@ -37,7 +37,7 @@ con.on('error', function(err) {
 con.query(
   'kill connection_id()',
   function(err, results, fields) {
-    console.log('CALLBACK', err);
+    console.log('CALLBACK is =>', err);
   }
 );
 

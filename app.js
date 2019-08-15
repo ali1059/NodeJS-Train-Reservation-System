@@ -13,36 +13,37 @@ var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 
 const saltRounds = 10;
-var con;
 
-function startConnect(){
+
+
 const options = {
+  connectionLimit : 10,
   host: "us-cdbr-iron-east-02.cleardb.net",
   user: "b5cc9a8011b24c",
   password: "8213edc3",
   database: "heroku_b43b181742c5259"
 };
 
-con = mysql.createConnection(options);
-con.connect(function(err){
-  if(err)
-  {
-   console.log(err);
-  startConnect();
-}
-else{
-  console.log("Connected gggggggg");
-}
-});
-}
-
-var del = con._protocol._delegateError;
-con._protocol._delegateError = function(err, sequence){
-  if (err.fatal) {
-    console.trace('=>fatal error: ' + err.message);
-  }
-  return del.call(this, err, sequence);
-};
+const con = mysql.createPool(options);
+// con.getConnection(function(err){
+//   if(err)
+//   {
+//    console.log(err);
+//   startConnect();
+// }
+// else{
+//   console.log("Connected gggggggg");
+// }
+// });
+//
+//
+// var del = con._protocol._delegateError;
+// con._protocol._delegateError = function(err, sequence){
+//   if (err.fatal) {
+//     console.trace('=>fatal error: ' + err.message);
+//   }
+//   return del.call(this, err, sequence);
+// };
 
 con.on('error', function(err) {
   console.log("I'm dead =>"+ err.toString());
@@ -52,12 +53,12 @@ con.on('error', function(err) {
   }
 });
 
-con.query(
-  'kill connection_id()',
-  function(err, results, fields) {
-    console.log('CALLBACK is =>', err);
-  }
-);
+// con.query(
+//   'kill connection_id()',
+//   function(err, results, fields) {
+//     console.log('CALLBACK is =>', err);
+//   }
+// );
 
 var sessionStore = new MySQLStore(options, con);
 

@@ -126,13 +126,14 @@ passport.use(new LocalStrategy(
         done(null, false);
       } else {
         const hash = result[0].password.toString();
+        console.log("HASHED PASS = "+hash);
         bcrypt.compare(password, hash, function(err, res) {
           if (res === true) {
             return done(null, {
               user_id: result[0].id
             });
           } else {
-            console.log("Failed"+err);
+            console.log("Failed ="+err);
             return done(null, false);
 
           }

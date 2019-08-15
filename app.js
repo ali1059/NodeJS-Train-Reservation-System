@@ -25,25 +25,6 @@ const options = {
 };
 
 const con = mysql.createPool(options);
-// con.getConnection(function(err){
-//   if(err)
-//   {
-//    console.log(err);
-//   startConnect();
-// }
-// else{
-//   console.log("Connected gggggggg");
-// }
-// });
-//
-//
-// var del = con._protocol._delegateError;
-// con._protocol._delegateError = function(err, sequence){
-//   if (err.fatal) {
-//     console.trace('=>fatal error: ' + err.message);
-//   }
-//   return del.call(this, err, sequence);
-// };
 
 con.on('error', function(err) {
   console.log("I'm dead =>"+ err.toString());
@@ -53,36 +34,11 @@ con.on('error', function(err) {
   }
 });
 
-// con.query(
-//   'kill connection_id()',
-//   function(err, results, fields) {
-//     console.log('CALLBACK is =>', err);
-//   }
-// );
+
 
 var sessionStore = new MySQLStore(options, con);
 
 
-// function createTables(){
-//
-//   let sql1="CREATE TABLE IF NOT EXISTS `booking` (
-//     `Bookingid` int(10) NOT NULL AUTO_INCREMENT,
-//     `Name` text NOT NULL,
-//     `Mobile` varchar(30) NOT NULL,
-//     `Seats` int(5) NOT NULL,
-//     `trainno` int(5) NOT NULL,
-//     `id` int(5) NOT NULL,
-//     PRIMARY KEY (`Bookingid`),
-//     KEY `trainno` (`trainno`),
-//     KEY `id` (`id`)
-//   )";
-//
-//   con.query(sql1,function(err,res){
-//     if(err) console.log(err);
-//     console.log("Booking Created");
-//   });
-//
-// }
 
 var user;
 const app = express();

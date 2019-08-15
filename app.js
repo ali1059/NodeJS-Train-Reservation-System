@@ -126,7 +126,7 @@ passport.use(new LocalStrategy(
         done(null, false);
       } else {
         const hash = result[0].password.toString();
-        console.log("HASHED PASS = "+hash);
+        console.log("HASHED PASS = "+hash+"and password ="+password);
         bcrypt.compare(password, hash, function(err, res) {
           if (res === true) {
             return done(null, {

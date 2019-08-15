@@ -13,6 +13,9 @@ var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 
 const saltRounds = 10;
+var con;
+
+function startConnect(){
 const options = {
   host: "us-cdbr-iron-east-02.cleardb.net",
   user: "b5cc9a8011b24c",
@@ -20,10 +23,18 @@ const options = {
   database: "heroku_b43b181742c5259"
 };
 
-const con = mysql.createConnection(options);
+con = mysql.createConnection(options);
 con.connect(function(err){
-  if(err) throw err;
+  if(err)
+  {
+   console.log(err);
+  startConnect();
+}
+else{
+  console.log("Connected gggggggg");
+}
 });
+}
 
 var del = con._protocol._delegateError;
 con._protocol._delegateError = function(err, sequence){
@@ -35,6 +46,10 @@ con._protocol._delegateError = function(err, sequence){
 
 con.on('error', function(err) {
   console.log("I'm dead =>"+ err.toString());
+  if(err.fatal){
+    console.log("Its FATAL starting again");
+    startConnect();
+  }
 });
 
 con.query(

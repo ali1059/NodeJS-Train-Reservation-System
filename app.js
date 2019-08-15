@@ -25,7 +25,7 @@ const con = mysql.createConnection(options);
 var del = con._protocol._delegateError;
 con._protocol._delegateError = function(err, sequence){
   if (err.fatal) {
-    console.trace('fatal error: ' + err.message);
+    console.trace('=>fatal error: ' + err.message);
   }
   return del.call(this, err, sequence);
 };
@@ -43,15 +43,6 @@ con.query(
 
 var sessionStore = new MySQLStore(options, con);
 
-
-con.connect(function(errc) {
-
-  if (errc) console.log("=>=>=>=>=>=>=>=>=>" + errc);
-  else {
-    console.log("Connected to DB");
-    // createTables();
-  }
-});
 
 // function createTables(){
 //

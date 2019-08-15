@@ -21,6 +21,9 @@ const options = {
 };
 
 const con = mysql.createConnection(options);
+con.connect(function(err){
+  if(err) throw err;
+});
 
 var del = con._protocol._delegateError;
 con._protocol._delegateError = function(err, sequence){

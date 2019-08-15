@@ -241,7 +241,7 @@ function authenticationMiddleware() {
 
 app.get("/signup", function(req, res) {
 
-  res.render("signup.ejs",{error1:err});
+  res.render("signup.ejs");
 });
 
 app.get("/aboutus",function(req,res){

@@ -201,8 +201,8 @@ app.post("/signup",[
       var duplicateError;
       con.query(sql, function(err, result) {
       if (err) {
-      duplicateError = test(err.message);
-      console.log("="+duplicateError);
+      //duplicateError = test(err.message);
+      console.log("="+err);
       res.render("signup1.ejs",{ error1:duplicateError });
 }
 else{
